@@ -363,7 +363,8 @@ public class MessageCompose extends BaseActivity implements OnClickListener,
              * There are no accounts set up. This should not have happened. Prompt the
              * user to set up an account as an acceptable bailout.
              */
-            MessageHomeActivity.launch(this);
+            // MonoMail: route to the e-ink UI instead of the legacy message list.
+            com.fsck.k9.ui.eink.EinkMailActivity.launch(this);
             changesMadeSinceLastSave = false;
             finish();
             return;
@@ -1364,11 +1365,8 @@ public class MessageCompose extends BaseActivity implements OnClickListener,
     }
 
     private void openDefaultFolder() {
-        long folderId = defaultFolderProvider.getDefaultFolder(account);
-        LocalMessageSearch search = new LocalMessageSearch();
-        search.addAccountUuid(account.getId().toString());
-        search.addAllowedFolder(folderId);
-        MessageHomeActivity.actionDisplaySearch(this, search, false, true);
+        // MonoMail: the e-ink UI is the home screen, never the legacy message list.
+        com.fsck.k9.ui.eink.EinkMailActivity.launch(this, account.getId().toString());
         finish();
     }
 

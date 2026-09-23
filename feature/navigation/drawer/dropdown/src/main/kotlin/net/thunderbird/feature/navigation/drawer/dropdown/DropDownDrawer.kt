@@ -44,6 +44,10 @@ class DropDownDrawer(
     init {
         drawer.addDrawerListener(createDrawerListener())
 
+        // MonoMail: the default semi-transparent scrim dithers on e-ink; the
+        // drawer edge is marked by a solid divider in MonoDrawerContent instead.
+        drawer.setScrimColor(android.graphics.Color.TRANSPARENT)
+
         // Make insets available to the drawer's Compose content
         ViewCompat.setOnApplyWindowInsetsListener(drawer) { _, insets ->
             drawerContent.dispatchApplyWindowInsets(insets.toWindowInsets())

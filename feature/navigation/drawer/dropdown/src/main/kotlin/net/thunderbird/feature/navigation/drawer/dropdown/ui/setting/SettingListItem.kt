@@ -1,16 +1,9 @@
 package net.thunderbird.feature.navigation.drawer.dropdown.ui.setting
 
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -40,21 +33,8 @@ internal fun SettingListItem(
     val isSmallWidth = windowSizeInfo.sizeClass.widthSizeClass == WindowWidthSizeClass.Small
     val hideText = isLandscape && isCompactHeight
 
-    val rotation: Float = if (isLoading) {
-        val infinite = rememberInfiniteTransition(label = "SyncIconRotation")
-        val angle by infinite.animateFloat(
-            initialValue = 0f,
-            targetValue = 360f,
-            animationSpec = infiniteRepeatable(
-                animation = tween(durationMillis = 1000, easing = LinearEasing),
-                repeatMode = RepeatMode.Restart,
-            ),
-            label = "SyncIconAngle",
-        )
-        angle
-    } else {
-        0f
-    }
+    // MonoMail: no spinning sync icon; continuous animation ghosts on e-ink.
+    val rotation = 0f
 
     if (isSmallWidth) {
         ButtonIcon(

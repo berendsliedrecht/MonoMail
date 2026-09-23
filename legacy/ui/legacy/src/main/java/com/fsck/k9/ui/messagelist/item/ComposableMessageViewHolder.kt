@@ -31,15 +31,13 @@ class ComposableMessageViewHolder(
 
         composeView.setContent {
             themeProvider.WithTheme {
-                MessageItemContent(
+                // MonoMail: MMD e-ink row instead of MessageItemContent
+                MonoMessageItemContent(
                     item = item,
                     isActive = isActive,
                     isSelected = isSelected,
-                    contactRepository = contactRepository,
-                    avatarMonogramCreator = avatarMonogramCreator,
                     onClick = { onClick(item) },
                     onLongClick = { onLongClick(item) },
-                    onAvatarClick = { onAvatarClick(item) },
                     onFavouriteClick = { onFavouriteClick(item) },
                     appearance = appearance(),
                 )

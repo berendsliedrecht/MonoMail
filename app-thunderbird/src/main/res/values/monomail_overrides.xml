@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- MonoMail: app-level resource overrides for e-ink. Same-named resources here
+     win over library definitions during resource merging, so upstream files stay
+     untouched. Contact avatar fallbacks are all black (white initials on top). -->
+<resources>
+    <integer-array name="contact_picture_fallback_background_colors_light">
+        <item>@android:color/black</item>
+    </integer-array>
+    <integer-array name="contact_picture_fallback_background_colors_dark">
+        <item>@android:color/black</item>
+    </integer-array>
+
+    <!-- Launcher icon background: pure white -->
+    <color name="launcher_icon_background">#FFFFFF</color>
+
+    <!-- MMD-style headers: bold black titles on the legacy toolbar -->
+    <style name="TextAppearance.MonoMail.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+</resources>

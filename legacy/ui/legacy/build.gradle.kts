@@ -46,6 +46,8 @@ dependencies {
 
     implementation(projects.plugins.openpgpApiLib.openpgpApi)
 
+    // MonoMail: MMD e-ink components
+    implementation(libs.mudita.mmd)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.preference)
     implementation(libs.preferencex)

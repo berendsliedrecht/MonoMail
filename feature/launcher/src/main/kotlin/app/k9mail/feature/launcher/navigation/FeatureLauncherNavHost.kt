@@ -2,6 +2,8 @@ package app.k9mail.feature.launcher.navigation
 
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.LocalActivity
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraphBuilder
@@ -44,6 +46,11 @@ fun FeatureLauncherNavHost(
         navController = navController,
         startDestination = OnboardingRoute.Onboarding(),
         modifier = modifier,
+        // MonoMail: screen transition animations ghost on e-ink refreshes.
+        enterTransition = { EnterTransition.None },
+        exitTransition = { ExitTransition.None },
+        popEnterTransition = { EnterTransition.None },
+        popExitTransition = { ExitTransition.None },
     ) {
         changelogNavigation.registerRoutes(
             navGraphBuilder = this,

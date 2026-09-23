@@ -300,6 +300,7 @@ mime4j-dom = { module = "org.apache.james:apache-mime4j-dom", version.ref = "mim
 minidns-hla = { module = "org.minidns:minidns-hla", version.ref = "minidns" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }
+mudita-mmd = { module = "com.mudita:MMD", version = "1.0.0" }
 moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
 moshi-kotlin-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
 mozilla-components-glean = { module = "org.mozilla.components:service-glean", version.ref = "mozillaAndroidComponents" }
