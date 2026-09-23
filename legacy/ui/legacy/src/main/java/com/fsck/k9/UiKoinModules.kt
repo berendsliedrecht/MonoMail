@@ -11,6 +11,7 @@ import com.fsck.k9.ui.account.accountUiModule
 import com.fsck.k9.ui.base.uiBaseModule
 import com.fsck.k9.ui.choosefolder.chooseFolderUiModule
 import com.fsck.k9.ui.compose.composeModule
+import com.fsck.k9.ui.eink.einkUiModule
 import com.fsck.k9.ui.endtoend.endToEndUiModule
 import com.fsck.k9.ui.folders.foldersUiModule
 import com.fsck.k9.ui.identity.identityUiModule
@@ -34,6 +35,7 @@ val legacyUiModules = listOf(
     endToEndUiModule,
     foldersUiModule,
     messageListUiModule,
+    einkUiModule,
     manageFoldersUiModule,
     chooseFolderUiModule,
     contactsModule,

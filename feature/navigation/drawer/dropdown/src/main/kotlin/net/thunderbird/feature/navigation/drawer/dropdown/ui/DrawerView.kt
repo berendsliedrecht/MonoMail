@@ -51,7 +51,8 @@ internal fun DrawerView(
         dispatch(Event.SelectFolder(drawerState.selectedFolderId))
     }
 
-    DrawerContent(
+    // MonoMail: MMD e-ink drawer instead of DrawerContent
+    MonoDrawerContent(
         state = state.value,
         onEvent = { dispatch(it) },
     )

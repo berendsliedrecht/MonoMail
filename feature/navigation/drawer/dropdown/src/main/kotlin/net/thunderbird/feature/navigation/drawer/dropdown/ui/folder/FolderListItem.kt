@@ -1,6 +1,5 @@
 package net.thunderbird.feature.navigation.drawer.dropdown.ui.folder
 
-import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,11 +17,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.sp
 import app.k9mail.legacy.ui.folder.FolderNameFormatter
+import com.mudita.mmd.components.text.TextMMD
 import net.thunderbird.components.ui.bolt.atom.icon.Icon
 import net.thunderbird.components.ui.bolt.atom.icon.Icons
-import net.thunderbird.components.ui.bolt.atom.text.TextLabelLarge
 import net.thunderbird.components.ui.bolt.organism.drawer.NavigationDrawerItem
 import net.thunderbird.components.ui.bolt.theme.BoltTheme
 import net.thunderbird.feature.mail.folder.api.FolderType
@@ -57,10 +58,10 @@ internal fun FolderListItem(
         starredCount = treeFolder.totalStarredCount
     }
 
+    // MonoMail: no animateContentSize; size animations ghost on e-ink.
     Column(
         modifier = modifier
-            .fillMaxWidth()
-            .animateContentSize(),
+            .fillMaxWidth(),
     ) {
         NavigationDrawerItem(
             label = {
@@ -123,8 +124,12 @@ private fun NavigationDrawerLabel(
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        TextLabelLarge(
+        // MonoMail: MMD typography; color follows the item's content color so
+        // the label stays white on the inverted (selected) item.
+        TextMMD(
             text = label,
+            fontSize = 15.sp,
+            color = LocalContentColor.current,
             overflow = TextOverflow.Ellipsis,
             maxLines = 2,
             modifier = Modifier.weight(1f),

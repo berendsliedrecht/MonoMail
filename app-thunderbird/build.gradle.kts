@@ -13,13 +13,14 @@ android {
     namespace = "net.thunderbird.android"
 
     defaultConfig {
-        applicationId = "net.thunderbird.android"
-        testApplicationId = "net.thunderbird.android.tests"
+        // MonoMail: own application id so it installs alongside Thunderbird
+        applicationId = "com.monoapps.monomail"
+        testApplicationId = "com.monoapps.monomail.tests"
 
         versionCode = 4
         versionName = "25.0"
 
-        buildConfigField("String", "CLIENT_INFO_APP_NAME", "\"Thunderbird for Android\"")
+        buildConfigField("String", "CLIENT_INFO_APP_NAME", "\"MonoMail\"")
     }
 
     androidResources {
@@ -97,7 +98,8 @@ android {
             .map(String::toBoolean)
             .orElse(false)
         release {
-            signingConfig = signingConfigs.getByType(SigningType.TB_RELEASE)
+            // MonoMail: debug-signed release so locally built APKs can update each other
+            signingConfig = signingConfigs.getByName("debug")
 
             isMinifyEnabled = !isCI.get()
             isShrinkResources = !isCI.get()
@@ -222,6 +224,9 @@ val fullBetaImplementation = configurations.create("fullBetaImplementation")
 val fullReleaseImplementation = configurations.create("fullReleaseImplementation")
 
 dependencies {
+    // MonoMail: MMD e-ink components
+    implementation(libs.mudita.mmd)
+
     implementation(projects.appCommon)
     implementation(projects.core.ui.compose.common)
     implementation(projects.core.ui.legacy.theme2.thunderbird)

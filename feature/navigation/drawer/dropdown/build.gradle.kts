@@ -16,6 +16,9 @@ android {
 dependencies {
     api(projects.feature.navigation.drawer.api)
 
+    // MonoMail: MMD e-ink components
+    implementation(libs.mudita.mmd)
+
     implementation(projects.core.android.account)
     implementation(projects.core.logging.api)
     implementation(projects.core.ui.contract)

@@ -1,10 +1,11 @@
 package net.thunderbird.android.auth
 
-import net.thunderbird.android.BuildConfig
 import net.thunderbird.core.common.oauth.OAuthConfiguration
 import net.thunderbird.core.common.oauth.OAuthConfigurationFactory
 
 @Suppress("ktlint:standard:max-line-length")
+// MonoMail: redirect URIs are hardcoded to the upstream application id because the
+// providers' OAuth clients are registered against those redirect schemes.
 class TbOAuthConfigurationFactory : OAuthConfigurationFactory {
     override fun createConfigurations(): Map<List<String>, OAuthConfiguration> {
         return mapOf(
@@ -27,7 +28,7 @@ class TbOAuthConfigurationFactory : OAuthConfigurationFactory {
             scopes = listOf("mail-w"),
             authorizationEndpoint = "https://api.login.aol.com/oauth2/request_auth",
             tokenEndpoint = "https://api.login.aol.com/oauth2/get_token",
-            redirectUri = "${BuildConfig.APPLICATION_ID}://oauth2redirect",
+            redirectUri = "net.thunderbird.android://oauth2redirect",
         )
     }
 
@@ -40,7 +41,7 @@ class TbOAuthConfigurationFactory : OAuthConfigurationFactory {
             scopes = listOf("https://www.fastmail.com/dev/protocol-imap", "https://www.fastmail.com/dev/protocol-smtp"),
             authorizationEndpoint = "https://api.fastmail.com/oauth/authorize",
             tokenEndpoint = "https://api.fastmail.com/oauth/refresh",
-            redirectUri = "${BuildConfig.APPLICATION_ID}://oauth2redirect",
+            redirectUri = "net.thunderbird.android://oauth2redirect",
         )
     }
 
@@ -55,7 +56,7 @@ class TbOAuthConfigurationFactory : OAuthConfigurationFactory {
             scopes = listOf("https://mail.google.com/"),
             authorizationEndpoint = "https://accounts.google.com/o/oauth2/v2/auth",
             tokenEndpoint = "https://oauth2.googleapis.com/token",
-            redirectUri = "${BuildConfig.APPLICATION_ID}:/oauth2redirect",
+            redirectUri = "net.thunderbird.android:/oauth2redirect",
         )
     }
 
@@ -89,7 +90,7 @@ class TbOAuthConfigurationFactory : OAuthConfigurationFactory {
             scopes = listOf("mail-w"),
             authorizationEndpoint = "https://api.login.yahoo.com/oauth2/request_auth",
             tokenEndpoint = "https://api.login.yahoo.com/oauth2/get_token",
-            redirectUri = "${BuildConfig.APPLICATION_ID}://oauth2redirect",
+            redirectUri = "net.thunderbird.android://oauth2redirect",
         )
     }
 
@@ -102,7 +103,7 @@ class TbOAuthConfigurationFactory : OAuthConfigurationFactory {
             scopes = listOf("openid", "profile", "email", "offline_access"),
             authorizationEndpoint = "https://auth.tb.pro/realms/tbpro/protocol/openid-connect/auth",
             tokenEndpoint = "https://auth.tb.pro/realms/tbpro/protocol/openid-connect/token",
-            redirectUri = "${BuildConfig.APPLICATION_ID}://oauth2redirect",
+            redirectUri = "net.thunderbird.android://oauth2redirect",
         )
 
     private fun createThundermailStageConfiguration(): Pair<List<String>, OAuthConfiguration> =
@@ -113,6 +114,6 @@ class TbOAuthConfigurationFactory : OAuthConfigurationFactory {
             scopes = listOf("openid", "profile", "email", "offline_access"),
             authorizationEndpoint = "https://auth-stage.tb.pro/realms/tbpro/protocol/openid-connect/auth",
             tokenEndpoint = "https://auth-stage.tb.pro/realms/tbpro/protocol/openid-connect/token",
-            redirectUri = "${BuildConfig.APPLICATION_ID}://oauth2redirect",
+            redirectUri = "net.thunderbird.android://oauth2redirect",
         )
 }
