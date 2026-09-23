@@ -2,7 +2,6 @@ package net.thunderbird.feature.navigation.drawer.dropdown.ui.common
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.snap
-import androidx.compose.animation.core.spring
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -18,9 +17,10 @@ internal fun AnimatedExpandIcon(
     isShowAnimations: Boolean = true,
     tint: Color? = null,
 ) {
+    // MonoMail: always snap; rotation animation ghosts on e-ink.
     val rotationAngle by animateFloatAsState(
         targetValue = if (isExpanded) 180f else 0f,
-        animationSpec = if (isShowAnimations) spring() else snap(),
+        animationSpec = snap(),
         label = "rotationAngle",
     )
 

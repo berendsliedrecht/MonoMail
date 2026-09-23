@@ -14,6 +14,9 @@ android {
 dependencies {
     implementation(projects.feature.mail.message.list.api)
 
+    // MonoMail: MMD e-ink components
+    implementation(libs.mudita.mmd)
+
     implementation(projects.backend.api)
     implementation(projects.core.android.account)
     implementation(projects.core.android.common)

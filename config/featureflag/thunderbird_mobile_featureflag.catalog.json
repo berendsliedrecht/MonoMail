@@ -76,7 +76,8 @@
         "display_in_app_notifications": true,
         "use_notification_sender_for_system_notifications": true,
         "message_view_action_export_eml": true,
-        "push_enabled_on_inbox_by_default": true
+        "push_enabled_on_inbox_by_default": true,
+        "use_compose_for_message_list_items": true
       },
       "daily": {
         "display_in_app_notifications": true,
@@ -86,7 +87,9 @@
       "beta": {
         "display_in_app_notifications": true
       },
-      "release": {}
+      "release": {
+        "use_compose_for_message_list_items": true
+      }
     },
     "k9": {
       "debug": {

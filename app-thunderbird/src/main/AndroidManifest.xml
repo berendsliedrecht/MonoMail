@@ -5,12 +5,58 @@
     android:installLocation="auto"
     >
 
+    <!-- MonoMail: MMD declares minSdk 28; the Mudita Kompakt runs Android 12+,
+         so overriding Thunderbird's minSdk 23 check is safe for this fork. -->
+    <uses-sdk tools:overrideLibrary="com.mudita.mmd" />
+
     <application
         android:name=".ThunderbirdApp"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.Thunderbird.Startup"
         >
+
+        <!-- MonoMail: OAuth redirects use the upstream application id (see
+             TbOAuthConfigurationFactory), so also catch those schemes here.
+             Merged into the activity declared in legacy/common. -->
+        <activity
+            android:name="net.openid.appauth.RedirectUriReceiverActivity"
+            android:exported="true"
+            tools:node="merge"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="net.thunderbird.android" />
+                <data android:scheme="net.thunderbird.android.debug" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="msauth"
+                    android:host="net.thunderbird.android"
+                    />
+                <data
+                    android:scheme="msauth"
+                    android:host="net.thunderbird.android.debug"
+                    />
+            </intent-filter>
+        </activity>
+
+        <!-- MonoMail: e-ink main UI -->
+        <activity
+            android:name="com.fsck.k9.ui.eink.EinkMailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Thunderbird.DayNight"
+            />
 
         <activity
             android:name="com.fsck.k9.ui.settings.account.OpenPgpAppSelectDialog"

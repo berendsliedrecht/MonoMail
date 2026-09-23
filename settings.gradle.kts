@@ -43,6 +43,12 @@ dependencyResolutionManagement {
                 includeGroup("com.github.cketti")
             }
         }
+        // MonoMail: Mudita Mindful Design components for e-ink
+        maven(url = "https://mudita.jfrog.io/artifactory/mmd-release") {
+            mavenContent {
+                includeGroup("com.mudita")
+            }
+        }
         maven(url = "https://central.sonatype.com/repository/maven-snapshots/") {
             mavenContent {
                 snapshotsOnly()
